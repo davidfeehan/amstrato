@@ -707,19 +707,25 @@ footer{
     <a href="https://calendly.com/david-amstrato" target="_blank" class="btn-primary">📅 Book Free Audit</a>
   </div>
   <div class="cta-divider">or drop your email and we'll reach out</div>
-  <form class="cta-form" action="https://formspree.io/f/mnjwgrod" method="POST">
+  <form class="cta-form" id="contactForm">
     <input
       type="email"
       name="email"
+      id="emailInput"
       class="cta-input"
       placeholder="your@email.com"
       required
       autocomplete="email"
       inputmode="email"
     />
-    <input type="hidden" name="_replyto" value="contact@amstrato.com"/>
-    <button type="submit" class="btn-primary">Send</button>
+    <button type="submit" class="btn-primary" id="submitBtn">Send</button>
   </form>
+  <div id="formSuccess" style="display:none;margin-top:16px;font-family:'DM Mono',monospace;font-size:13px;color:var(--p);letter-spacing:.08em;text-align:center;">
+    ✓ Got it! We'll be in touch soon.
+  </div>
+  <div id="formError" style="display:none;margin-top:16px;font-family:'DM Mono',monospace;font-size:12px;color:var(--danger);letter-spacing:.08em;text-align:center;">
+    Something went wrong. Email us directly at contact@amstrato.com
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -763,7 +769,42 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Smooth scroll for anchor links
+// AJAX form submission - stays on page
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formSuccess = document.getElementById('formSuccess');
+const formError = document.getElementById('formError');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/mnjwgrod', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: document.getElementById('emailInput').value })
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        formError.style.display = 'block';
+        submitBtn.textContent = 'Send';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      formError.style.display = 'block';
+      submitBtn.textContent = 'Send';
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
