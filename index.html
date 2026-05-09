@@ -320,10 +320,11 @@ footer{padding:48px;border-top:1px solid var(--border);display:flex;justify-cont
   <span class="section-tag" style="display:block;margin-bottom:16px">Get Started</span>
   <h2>READY TO<br/><span style="color:var(--amber)">AUTOMATE?</span></h2>
   <p>Book a free 30-minute audit. We'll show you exactly what to automate and what it's worth to your business.</p>
-  <div class="cta-row">
-    <input type="email" class="cta-input" placeholder="your@email.com"/>
-    <a href="mailto:hello@amstrato.com" class="btn-primary">Book Free Audit</a>
-  </div>
+  <form class="cta-row" action="https://formspree.io/f/mnjwgrod" method="POST">
+  <input type="email" name="email" class="cta-input" placeholder="your@email.com" required/>
+  <input type="hidden" name="_replyto" value="contact@amstrato.com"/>
+  <button type="submit" class="btn-primary">Book Free Audit</button>
+</form>
 </section>
 
 <footer>
