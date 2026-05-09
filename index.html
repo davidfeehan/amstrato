@@ -442,13 +442,29 @@ footer{
   /* Sections */
   section{padding:60px 20px}
   .hero{padding:100px 20px 60px;min-height:100svh}
-  .hero h1{font-size:clamp(48px,12vw,72px)}
-  .hero-sub{font-size:15px}
+  .hero h1{font-size:clamp(52px,13vw,80px)}
+  .hero-sub{font-size:17px;max-width:100%}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:10px}
   .hero-actions .btn-primary,
-  .hero-actions .btn-secondary{width:100%;text-align:center}
+  .hero-actions .btn-secondary{width:100%;text-align:center;padding:18px 28px;font-size:16px}
   .hero-stats{gap:24px;margin-top:36px}
+  .stat-num{font-size:48px}
+  .stat-label{font-size:11px}
   .scroll-hint{display:none}
+
+  /* Section headings */
+  .section-title{font-size:clamp(48px,12vw,72px)}
+  .section-tag{font-size:12px;letter-spacing:.16em}
+  .section-sub{font-size:16px;max-width:100%}
+
+  /* Cards */
+  .solution-card h3{font-size:17px}
+  .solution-card .num{font-size:64px}
+  .vertical-card h3{font-size:36px}
+  .vertical-card{padding:24px}
+  .plan-price{font-size:64px}
+  .plan-name{font-size:12px}
+  .plan-feature{font-size:14px}
 
   /* Grids → single column */
   .problem-inner{grid-template-columns:1fr;gap:32px}
@@ -459,19 +475,22 @@ footer{
   .pricing-grid{grid-template-columns:1fr;gap:12px}
   .pricing-grid .pricing-card:last-child{grid-column:auto}
 
-  /* Cards */
-  .vertical-card{padding:24px}
-  .pricing-card{padding:24px}
+  /* Process */
+  .step-content h4{font-size:20px}
+  .step-content p{font-size:15px}
+  .step-num{font-size:11px}
 
   /* CTA */
   .cta-section{padding:72px 20px}
+  .cta-section h2{font-size:clamp(56px,14vw,88px)}
   .cta-form{flex-direction:column}
-  .cta-input{min-width:unset;width:100%}
-  .cta-buttons .btn-primary{width:100%;text-align:center}
+  .cta-input{min-width:unset;width:100%;font-size:16px;padding:16px 20px}
+  .cta-buttons .btn-primary{width:100%;text-align:center;font-size:16px;padding:18px}
 
   /* Footer */
   footer{padding:32px 20px;flex-direction:column;text-align:center}
   .footer-links{justify-content:center}
+  .footer-copy{font-size:11px}
 }
 
 /* ===== SMALL MOBILE (max 380px) ===== */
